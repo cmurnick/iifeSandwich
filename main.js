@@ -1,18 +1,53 @@
+
 let myBread = sandwich.getBread();
-console.log("My bread", myBread)
 
 let myCheese = sandwich.getCheese();
-console.log("My Cheese", myCheese);
 
 let myCondiments = sandwich.getCondiments();
-console.log("My Condiments", myCondiments);
 
 let myMeat = sandwich.getMeat();
-console.log("My Meat", myMeat);
+
 
 let myVeggies = sandwich.getVeggies();
-console.log("My Veggies", myVeggies);
+
 
 // SolarSystem.setPlanet("Pluto");
 // let myPlanets = SolarSystem.getPlanets();
 // console.log("My planets", myPlanets);
+
+var createSandwich = document.getElementById('sandwiches');
+
+
+const domStrings = (message, input) => {
+    let price = Object.values(input);
+    let name = Object.keys(input);
+    console.log(name);
+    let sandwichString = '';
+   
+
+  
+  	var domString2 = `<h3> ${message}</h3>`;
+    for (var i =0; i < name.length; i++) {
+       let domString = '';
+      
+      // domString += `<div> + "Choose your" + "meat" + ":"</div>`
+	  domString +=   `<input type="checkbox" name="${name[i]}" value="${price[i]}">${name[i]}</input><br>`
+	  
+	   sandwichString += domString;
+    }
+
+      writeToDom(domString2 + sandwichString);
+    }
+  
+
+  function writeToDom(strang) {
+    createSandwich.innerHTML += strang;
+    }
+
+  domStrings("poop", myBread);
+  	
+  domStrings("poop2", myCheese);
+
+  domStrings(myCondiments);
+
+
