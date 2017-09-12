@@ -43,18 +43,14 @@ var chosenToppings = '';''
 document.getElementById("finalSandwich").innerHTML = '';
 for(var i = 0; i < inputs.length; i++) {
     if(inputs[i].type == "checkbox" && inputs[i].checked) {
-        
-        chosenToppings += `<div>`
+                chosenToppings += `<div>`
         chosenToppings += `<span> ${inputs[i].id} ${inputs[i].value} </span>`
         chosenToppings += `</div>`
 
         document.getElementById("finalSandwich").innerHTML = chosenToppings;
 
         priceArray += parseFloat(inputs[i].value);
-
-
         }
-
 }
         document.getElementById("finalSandwich").innerHTML += priceArray;
     }) ;
