@@ -8,7 +8,7 @@ let myVeggies = sandwich.getVeggies();
 var createSandwich = document.getElementById('sandwiches');
 
 
-const domStrings = (message, input) => {
+const domStrings = (message, input, clazz) => {
     let price = Object.values(input);
     let name = Object.keys(input);
     let sandwichString = '';
@@ -18,7 +18,7 @@ const domStrings = (message, input) => {
     for (var i =0; i < name.length; i++) {
        let domString = '';
       
-	  domString +=   `<input type="checkbox" name="${name[i]}" value="${price[i]}">${name[i]}</input><br>`
+	  domString +=   `<input type="checkbox" id="${name[i]}" class="${clazz}" value="${price[i]}">${name[i]}</input><br>`
     sandwichString += domString;
     }
       writeToDom(domString2 + sandwichString);
@@ -29,65 +29,86 @@ function writeToDom(strang) {
     createSandwich.innerHTML += strang;
     }
 
-  domStrings("Choose your bread:", myBread);
-  domStrings("Choose your cheese:", myCheese);
-  domStrings("Choose your condiments:", myCondiments);
-  domStrings("Choose your meat:", myMeat);
-  domStrings("Choose your veggies:", myVeggies);
+  domStrings("Choose your bread:", myBread, "bread");
+  domStrings("Choose your cheese:", myCheese, "cheese");
+  domStrings("Choose your condiments:", myCondiments, "condiments");
+  domStrings("Choose your meat:", myMeat, "meat");
+  domStrings("Choose your veggies:", myVeggies, "veggies");
 
-//what I need to do overall for event listener
-// target all items by class name of main div
-// for loop through them
-// event listener on change
-// then if statement
-
-var wholeSandwich = document.getElementById("finalSandwich");
-
-//entire event listener, but feel like it needs to be broken to smaller parts.  NOT WORKING LIKE THIS
-const sandwichOrder = (input) => {  
-  let price = Object.values(input);
-  let name = Object.keys(input);
 
 
     document.getElementById("sandwiches").addEventListener("change", function(e) {
       console.log(e);
-      for (let i = 0; i < input.length; i++ ){
+      console.log(myCheese[e.target.getAttribute("id")]);
+      
+      if(e.target.checked) {
+        if(e.target.classList.contains("bread")) { 
+          console.log(e.target);
+            var foodNode = `<p>${e.target.getAttribute("id")}</p> <p>${myBread[e.target.getAttribute("id")]}</p>`;
+        }   else if (e.target.classList.contains("cheese")) { 
+            var foodNode = `<p>${e.target.getAttribute("id")}</p> <p>${myCheese[e.target.getAttribute("id")]}</p>`;
+        }   else if (e.target.classList.contains("condiments")) { 
+            var foodNode = `<p>${e.target.getAttribute("id")}</p> <p>${myCondiments[e.target.getAttribute("id")]}</p>`;
+        }   else if (e.target.classList.contains("meat")) { 
+            var foodNode = `<p>${e.target.getAttribute("id")}</p> <p>${myMeat[e.target.getAttribute("id")]}</p>`;
+        }   else if (e.target.classList.contains("veggies")) { 
+            var foodNode = `<p>${e.target.getAttribute("id")}</p> <p>${myVeggies[e.target.getAttribute("id")]}</p>`;
+        }   
 
-      if(event.target === event.target.checked) { 
-          add.event.target.name
+// add classnames to the p tag and combine into one p tag rather than 2
+      
       } else {
-          remove.event.target.name
+        if(e.target.classList.contains("bread")) { 
+          console.log(e.target);
+            var foodNode = 
+        }   else if (e.target.classList.contains("cheese")) { 
+            var foodNode = `<p>${e.target.getAttribute("id")}</p> <p>${myCheese[e.target.getAttribute("id")]}</p>`;
+        }   else if (e.target.classList.contains("condiments")) { 
+            var foodNode = `<p>${e.target.getAttribute("id")}</p> <p>${myCondiments[e.target.getAttribute("id")]}</p>`;
+        }   else if (e.target.classList.contains("meat")) { 
+            var foodNode = `<p>${e.target.getAttribute("id")}</p> <p>${myMeat[e.target.getAttribute("id")]}</p>`;
+        }   else if (e.target.classList.contains("veggies")) { 
+            var foodNode = `<p>${e.target.getAttribute("id")}</p> <p>${myVeggies[e.target.getAttribute("id")]}</p>`;
+        }   
+
       }
-      console.log(sandwichOrder);
-  }
-})
-}
+
+        console.log(foodNode);
+        document.getElementById("finalSandwich").innerHTML += foodNode;      
+  });
+
+
   
 
 
-//breakdown of for loop to run in conjunction with Event Listener
-const finalSandwichLoop = (input) => {
-  let price = Object.values(input);
-  let name = Object.keys(input);
-  let sandwichString = '';
+// //breakdown of for loop to run in conjunction with Event Listener
+// const finalSandwichLoop = (input) => {
+//   let price = Object.values(input);
+//   let name = Object.keys(input);
+//   let sandwichString = '';
 
-  for (let i = 0; i < name.length; i++) {
-    domString= '';
-    domString +=   `<div>${name[i]}</div><br>`
-    sandwichString += domString;
-    }
+//   for (let i = 0; i < name.length; i++) {
+//     domString= '';
+//     domString +=   `<div>${name[i]}</div><br>`
+//     sandwichString += domString;
+//     }
 
-      writeToDom2(sandwichString);
-    }
+//       writeToDom2(sandwichString);
+//     }
   
-function writeToDom2(strang) {
-    wholeSandwich.innerHTML += strang;
-    }
+// function writeToDom2(strang) {
+//     wholeSandwich.innerHTML += strang;
+//     }
 
-finalSandwichLoop(sandwichString);
+// finalSandwichLoop(sandwichString);
 
 
-
+// breadChooser.addEventListener("change", function(event){
+//   selectedTopping = event.target.value;
+//   for (let key in myBread){
+//     if(selectedTopping === key && event.target.checked) {
+//       finalSandwichPrice = myBread[key];
+//       console.log(finalSandwichPrice);
 
 
 
