@@ -37,6 +37,25 @@ function writeToDom(strang) {
 
 
 
+var inputs = document.getElementsByTagName("input");
+for(var i = 0; i < inputs.length; i++) {
+    if(inputs[i].type == "checkbox") {
+        inputs[i].checked = true; 
+
+        // wrap above in teh below event listener
+        // add blank string inside event listener
+        // add blank array
+        // run above if and under the true, add a 4 loop through above dom string
+        // loop throgh the name and the value
+        // after loop then push the value through to the empty array
+        // ignore else stmt
+        // outside of if stmt, run a for loop through the value array and add the values together for the total price
+
+    }  
+}
+
+
+
     document.getElementById("sandwiches").addEventListener("change", function(e) {
       console.log(e);
       console.log(myCheese[e.target.getAttribute("id")]);
@@ -57,23 +76,23 @@ function writeToDom(strang) {
 
 // add classnames to the p tag and combine into one p tag rather than 2
       
-      } else {
-        if(e.target.classList.contains("bread")) { 
-          console.log(e.target);
-            var foodNode = 
-        }   else if (e.target.classList.contains("cheese")) { 
-            var foodNode = `<p>${e.target.getAttribute("id")}</p> <p>${myCheese[e.target.getAttribute("id")]}</p>`;
-        }   else if (e.target.classList.contains("condiments")) { 
-            var foodNode = `<p>${e.target.getAttribute("id")}</p> <p>${myCondiments[e.target.getAttribute("id")]}</p>`;
-        }   else if (e.target.classList.contains("meat")) { 
-            var foodNode = `<p>${e.target.getAttribute("id")}</p> <p>${myMeat[e.target.getAttribute("id")]}</p>`;
-        }   else if (e.target.classList.contains("veggies")) { 
-            var foodNode = `<p>${e.target.getAttribute("id")}</p> <p>${myVeggies[e.target.getAttribute("id")]}</p>`;
-        }   
+      // } else {
+      //   if(e.target.classList.contains("bread")) { 
+      //     console.log(e.target);
+      //       var foodNode = 
+      //   }   else if (e.target.classList.contains("cheese")) { 
+      //       var foodNode = `<p>${e.target.getAttribute("id")}</p> <p>${myCheese[e.target.getAttribute("id")]}</p>`;
+      //   }   else if (e.target.classList.contains("condiments")) { 
+      //       var foodNode = `<p>${e.target.getAttribute("id")}</p> <p>${myCondiments[e.target.getAttribute("id")]}</p>`;
+      //   }   else if (e.target.classList.contains("meat")) { 
+      //       var foodNode = `<p>${e.target.getAttribute("id")}</p> <p>${myMeat[e.target.getAttribute("id")]}</p>`;
+      //   }   else if (e.target.classList.contains("veggies")) { 
+      //       var foodNode = `<p>${e.target.getAttribute("id")}</p> <p>${myVeggies[e.target.getAttribute("id")]}</p>`;
+      //   }   
 
       }
 
-        console.log(foodNode);
+        // console.log(foodNode);
         document.getElementById("finalSandwich").innerHTML += foodNode;      
   });
 
